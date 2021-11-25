@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  src_git: https://github.com/hanwckf/rt-n56u.git
+  src_git: https://github.com/keke1023/Padavan.git
   build_dir: /opt/rt-n56u
   images_dir: /opt/images
   ENABLED_CFG: |
@@ -14,6 +14,11 @@ env:
     CONFIG_FIRMWARE_INCLUDE_SMARTDNS
     CONFIG_FIRMWARE_INCLUDE_DROPBEAR
     CONFIG_FIRMWARE_INCLUDE_DROPBEAR_FAST_CODE
+    CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS
+    CONFIG_FIRMWARE_INCLUDE_V2RAY
+    CONFIG_FIRMWARE_INCLUDE_KUMASOCKS
+    CONFIG_FIRMWARE_INCLUDE_ADBYBY
+    CONFIG_FIRMWARE_CPU_SLEEP
   DISABLED_CFG: |
     CONFIG_FIRMWARE_INCLUDE_TCPDUMP
     CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT
@@ -26,7 +31,6 @@ env:
     CONFIG_FIRMWARE_INCLUDE_HTOP
     CONFIG_FIRMWARE_INCLUDE_NANO
     CONFIG_FIRMWARE_INCLUDE_MENTOHUST
-    CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS
     CONFIG_FIRMWARE_INCLUDE_SSSERVER
     CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_SERVER
     CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CLIENT
@@ -42,6 +46,7 @@ env:
     CONFIG_FIRMWARE_INCLUDE_OPENSSL_EC
     CONFIG_FIRMWARE_INCLUDE_OPENVPN
     CONFIG_FIRMWARE_INCLUDE_EAP_PEAP
+    
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
@@ -54,7 +59,7 @@ jobs:
       matrix:
         include:
           - build_variant: "mt7621"
-            targets: "K2P RM2100"
+            targets: "RM2100"
     steps:
       - uses: actions/checkout@v2
       - name: Prepare environment
